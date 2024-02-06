@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Organización de Artículos</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <h1>Organización de Artículos</h1>
+
+  <div id="articles-container" class="grid-container"></div>
+
+  <div id="fixed-buttons" class="fixed-buttons">
+    <input id="position-input" type="number" step="1" min="1" placeholder="Posición">
+    <button id="move-button">Mover</button>
+    <button id="save-button">Guardar</button>
+    <button id="discard-button">Descartar</button>
+    <a id="download-link" download="modified_products.json" style="display: none;">Descargar</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

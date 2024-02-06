@@ -1,0 +1,69 @@
+{
+    "id": "19CmXb",
+    "title": "Air Jordan 6 Retro \"Yellow Ochre\"",
+    "realPrice": "$200",
+    "discountPrice": "Sin oferta",
+    "offertNum": "Sin oferta",
+    "productLink": "https://www.nike.com/t/air-jordan-6-retro-yellow-ochre-mens-shoes-QLGPHR/CT8529-170",
+    "images": [
+      "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/91f811da-1df7-4c0a-a651-e3dad63870a0/air-jordan-6-retro-yellow-ochre-mens-shoes-QLGPHR.png"
+    ],
+    "thumbnail": [],
+    "category": [
+      "hombre",
+      "jordan"
+    ]
+  },
+  {
+    "id": "0hQHBYUxNs",
+    "title": "Nike Air Force 1 '07",
+    "realPrice": "$120",
+    "discountPrice": "$90.97",
+    "offertNum": "Sin oferta",
+    "productLink": "https://www.nike.com/us/es/t/calzado-air-force-1-07-PqdxJw/FN7185-423",
+    "images": [
+      "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/b7d9211c-26e7-431a-ac24-b0540fb3c00f/air-force-1-07-mens-shoes-jBrhbr.png",
+      "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/fc4622c4-2769-4665-aa6e-42c974a7705e/air-force-1-07-mens-shoes-jBrhbr.png"
+    ],
+    "thumbnail": [
+      "https://static.nike.com/a/images/t_PDP_144_v1/f_auto/4f37fca8-6bce-43e7-ad07-f57ae3c13142/air-force-1-07-mens-shoes-jBrhbr.png",
+      "https://static.nike.com/a/images/t_PDP_144_v1/f_auto/21d38052-598b-44f6-a857-123c9f72b015/air-force-1-07-mens-shoes-jBrhbr.png",
+    ],
+    "category": [
+      "hombre",
+      "air-force-1"
+    ]
+  },
+  {
+    "id": "CRoNE",
+    "title": "Nike Air VaporMax Plus",
+    "realPrice": "$210",
+    "discountPrice": "Sin oferta",
+    "offertNum": "Sin oferta",
+    "productLink": "https://www.nike.com/us/es/t/calzado-air-vapormax-plus-xbt7zf/FZ3614-686",
+    "images": [
+      "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/37b4e4c8-c86c-4449-a8bf-bb635f17f4fe/calzado-air-vapormax-plus-xbt7zf.png",
+      "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/75c8667e-4b9e-43c3-9bab-69dec369cec7/calzado-air-vapormax-plus-xbt7zf.png"
+    ],
+    "thumbnail": [
+      "https://static.nike.com/a/images/t_PDP_144_v1/f_auto/84965911-0225-4391-b6a1-9e7a6ca40fd8/calzado-air-vapormax-plus-xbt7zf.png",
+      "https://static.nike.com/a/images/t_PDP_144_v1/f_auto/f736410d-8518-49cb-a407-bf1e2ef33e7b/calzado-air-vapormax-plus-xbt7zf.png"
+    ],
+    "category": [
+      "mujer",
+      "air-max"
+    ]
+  },
+
+  tengo un archivo json en este formato el archivo donde se extraen lso datos se llama products.json, quiero una interfaz para organizar los articulos con html css y js quiero poder guardar los cambios o descartarlos y que se reflejen en el archivo
+
+cosas importantes
+1 para cada archivo solo muestra la primera imagen y el nombre
+2 usa grid para organizarlos mejor
+3 usa fetch para mostrar y modificar el orden de cada articulo
+4 que lso botones esten siempre flotando del lado derecho con fixe
+5 quiero que uses un input para mover las posiciones el input debe mostrar la posicion actual y poder modificar a la posicion que se requiere cambiar
+6 solo se puede modificar un articulo a la vez
+7 al quitar el focus del input se deben guardar los cambios y mover el articulo a su nueva posicion y que el input tenga la posicion actual del articulo
+8 quiero que las modificaciones del archivo puedan ser descargadas
+ agrega estilos interesantes
