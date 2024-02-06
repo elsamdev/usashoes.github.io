@@ -224,6 +224,17 @@ h2 {
     max-height: 80%;
   }
 
+  #category2 {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+   }
+ 
+   #category2 li a{
+     font-size: 16px;
+   }
+ 
+
 
 }
 
@@ -239,6 +250,7 @@ h2 {
   padding: 0;
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   gap: 30px;
 }
 
@@ -250,7 +262,7 @@ h2 {
   font-weight: 600;
   color: #333;
   transition: border-bottom-color 0.3s ease;
-
+  width: calc(33.33% - 10px); /* Ajustar el ancho de los elementos */
 }
 
  /* #category2 li a:hover {
@@ -286,15 +298,6 @@ h2 {
     font-size: 18px;
   }
 
-  #category2 {
-   width: 100%;
-   display: flex;
-   justify-content: space-around;
-  }
-
-  #category2 li a{
-    font-size: 16px;
-  }
 
 
   h1 {

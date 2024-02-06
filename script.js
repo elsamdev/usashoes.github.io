@@ -155,6 +155,9 @@ listaCategory.addEventListener("click", (event) => {
        categoria = "hombre"
     } else  if (categoriaSeleccionada == "Para Mujer"){
       categoria = "mujer"
+    }
+    else  if (categoriaSeleccionada == "Niños 1 a 7"){
+      categoria = "niños1to7"
     } else{
       categoria = ""
     } 
