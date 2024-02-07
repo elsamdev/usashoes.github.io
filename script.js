@@ -187,17 +187,61 @@ searchInput.addEventListener("input", () => {
 });
 
     // Función para cargar más productos al hacer scroll
-    const loadMoreProducts = () => {
-      const windowBottom = window.innerHeight + window.pageYOffset;
-      const containerBottom = productsContainer.offsetTop + productsContainer.offsetHeight;
-      if (windowBottom >= containerBottom) {
-        currentPage++;
-        showProducts();
+// Función para cargar más productos al hacer scroll
+// Función para cargar más productos al hacer scroll
+// Función para cargar más productos al hacer scroll
+const loadMoreProducts = () => {
+  const windowBottom = window.innerHeight + window.pageYOffset;
+  const containerBottom = productsContainer.offsetTop + productsContainer.offsetHeight;
+  if (windowBottom >= containerBottom) {
+    currentPage++;
+    showProducts();
+
+    // Mostrar la animación de carga
+    const loadingOverlay = document.createElement("div");
+    loadingOverlay.classList.add("loading-overlay");
+
+    const loadingSpinner = document.createElement("div");
+    loadingSpinner.classList.add("loading-spinner");
+
+    const loadingText = document.createElement("div");
+    loadingText.classList.add("loading-text");
+    loadingText.textContent = "Cargando más productos...";
+
+    loadingOverlay.appendChild(loadingSpinner);
+    loadingOverlay.appendChild(loadingText);
+    document.body.appendChild(loadingOverlay);
+
+    let loadedImages = 0;
+
+    // Función para contar las imágenes cargadas
+    const countLoadedImages = () => {
+      loadedImages++;
+      if (loadedImages === 5) {
+        // Ocultar la animación de carga después de que se carguen 5 imágenes
+        setTimeout(() => {
+          document.body.removeChild(loadingOverlay);
+        }, 500);
+        // Eliminar el evento load de las imágenes
+        images.forEach((image) => {
+          image.removeEventListener("load", countLoadedImages);
+        });
       }
     };
 
-    // Evento para cargar más productos al hacer scroll
-    window.addEventListener("scroll", loadMoreProducts);
+    // Obtener las imágenes de los productos
+    const productImages = document.querySelectorAll(".product-card img");
+    const images = Array.from(productImages);
+
+    // Agregar el evento load a las imágenes
+    images.forEach((image) => {
+      image.addEventListener("load", countLoadedImages);
+    });
+  }
+};
+
+// Evento para cargar más productos al hacer scroll
+window.addEventListener("scroll", loadMoreProducts);
   });
 
   
