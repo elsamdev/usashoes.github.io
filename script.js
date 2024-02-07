@@ -22,6 +22,9 @@ let currentPage = 1;
 const itemsPerPage = 40;
 let filteredProducts = [];
 
+
+
+
 // Obtener los datos de los productos desde el archivo JSON
 fetch("products.json")
   .then((response) => response.json())
@@ -68,6 +71,36 @@ fetch("products.json")
       image.alt = product.title;
       card.appendChild(image);
 
+      const tagContainer = document.createElement("div");
+      tagContainer.classList.add("tag-container");
+      card.appendChild(tagContainer);
+      
+      product.category.forEach((category) => {
+        const tag = document.createElement("span");
+        if (category == "niños1to7"){
+          tag.textContent = "NIÑOS 1 A 7";
+        } else {
+          tag.textContent = category.toUpperCase();;
+        }
+        
+        tag.classList.add("product-tag");
+        tagContainer.appendChild(tag);
+      
+        tag.addEventListener("click", () => {
+          // Remover clase CSS de todos los tags
+          const tags = tagContainer.querySelectorAll(".product-tag");
+          setCategoryFocus(category);
+          tags.forEach((tag) => {
+            tag.classList.remove("active");
+          });
+      
+          // Agregar clase CSS al tag clickeado
+          tag.classList.add("active");
+      
+          filterProducts(category, "");
+        });
+      });
+
       const thumbnailContainer = document.createElement("div");
       thumbnailContainer.classList.add("thumbnail-container"); // Agrega una clase CSS si deseas estilarlo
       card.appendChild(thumbnailContainer);
@@ -110,6 +143,8 @@ fetch("products.json")
         const url = `https://wa.me/13213287507?text=${message}`;
         window.open(url);
       });
+
+
       button.innerHTML = '<i class="fab fa-whatsapp"></i> Consultar por modelo';
       card.appendChild(button);
 
@@ -127,6 +162,9 @@ fetch("products.json")
 
       // Mostrar el número deproductos
       numProductsElement.textContent = `Articulos Mostrados: ${filteredProducts.length}`;
+
+
+
       setupLightbox();
     };
 
@@ -188,58 +226,73 @@ searchInput.addEventListener("input", () => {
   timeoutId = setTimeout(handleSearch, 500);
 });
 
-    // Función para cargar más productos al hacer scroll
-// Función para cargar más productos al hacer scroll
-// Función para cargar más productos al hacer scroll
+
+let isLoading = false; // Variable para controlar si ya se está cargando más productos
+
 // Función para cargar más productos al hacer scroll
 const loadMoreProducts = () => {
+
+
+  const getTotalPages = () => {
+    return Math.ceil(filteredProducts.length / itemsPerPage);
+  };
+  const totalPages = getTotalPages();
+  // Función para mostrar la página actual y el total de páginas
+ 
+  
+  if (currentPage <= totalPages){
+   
+  
+
   const windowBottom = window.innerHeight + window.pageYOffset;
   const containerBottom = productsContainer.offsetTop + productsContainer.offsetHeight;
-  if (windowBottom >= containerBottom) {
+
+  // Verifica si ya se está cargando más productos o si se ha llegado al final de la página
+  if (!isLoading && windowBottom >= containerBottom) {
+    // Verifica si ya se han cargado todos los productos disponibles
+    if (filteredProducts.length === 0) {
+      window.removeEventListener("scroll", loadMoreProducts); // Remueve el evento de scroll una vez que se llega al final de la página
+      
+      return; // No realiza ninguna acción adicional si no hay más productos disponibles
+    }
+
+    isLoading = true; // Establece isLoading como verdadero para evitar cargar más productos mientras se está cargando
+
     currentPage++;
     showProducts();
 
-    // Mostrar la animación de carga
-    const loadingOverlay = document.createElement("div");
-    loadingOverlay.classList.add("loading-overlay");
+    console.log(currentPage , " ", totalPages)
 
-    const loadingSpinner = document.createElement("div");
-    loadingSpinner.classList.add("loading-spinner");
 
-    const loadingText = document.createElement("div");
-    loadingText.classList.add("loading-text");
-    loadingText.textContent = "Cargando más productos...";
+    
+    // Agrega la animación de carga solo si no está presente
+    if (!document.querySelector(".loading-overlay")) {
+      const loadingOverlay = document.createElement("div");
+      loadingOverlay.classList.add("loading-overlay");
 
-    loadingOverlay.appendChild(loadingSpinner);
-    loadingOverlay.appendChild(loadingText);
-    document.body.appendChild(loadingOverlay);
+      const loadingSpinner = document.createElement("div");
+      loadingSpinner.classList.add("loading-spinner");
 
-    let loadedImages = 0;
+      const loadingText = document.createElement("div");
+      loadingText.classList.add("loading-text");
+      loadingText.textContent = "Cargando más productos...";
 
-    // Función para contar las imágenes cargadas
-    const countLoadedImages = () => {
-      loadedImages++;
-      if (loadedImages === 5) {
-        // Ocultar la animación de carga después de que se carguen 5 imágenes
-        setTimeout(() => {
-          document.body.removeChild(loadingOverlay);
-        }, 500);
-        // Eliminar el evento load de las imágenes
-        images.forEach((image) => {
-          image.removeEventListener("load", countLoadedImages);
-        });
+      loadingOverlay.appendChild(loadingSpinner);
+      loadingOverlay.appendChild(loadingText);
+      document.body.appendChild(loadingOverlay);
+    }
+
+    // Oculta el evento de carga después de un tiempo
+    setTimeout(() => {
+      isLoading = false; // Establece isLoading como falso una vez que se ha completado la carga
+      const loadingOverlay = document.querySelector(".loading-overlay");
+      if (loadingOverlay) {
+        loadingOverlay.remove();
       }
-    };
-
-    // Obtener las imágenes de los productos
-    const productImages = document.querySelectorAll(".product-card img");
-    const images = Array.from(productImages);
-
-    // Agregar el evento load a las imágenes
-    images.forEach((image) => {
-      image.addEventListener("load", countLoadedImages);
-    });
+    }, 2000);
   }
+}
+
 };
 
 // Evento para cargar más productos al hacer scroll
@@ -458,3 +511,15 @@ const categories = listaCategory.querySelectorAll("a");
 categories.forEach((category) => {
   category.addEventListener("click", handleCategoryFocus);
 });
+
+
+const setCategoryFocus = (category) => {
+  const categories = document.querySelectorAll("#category2 li a");
+  console.log(category)
+  categories.forEach((categoryElement) => {
+    categoryElement.classList.remove("focused");
+    if (categoryElement.getAttribute("value") === category) {
+      categoryElement.classList.add("focused");
+    }
+  });
+};
