@@ -112,12 +112,14 @@ fetch("products.json")
           // Ignorar la primera imagen del thumbnail
           const thumbnailImage = document.createElement("img");
           thumbnailImage.src = thumbnailUrl;
+          thumbnailImage.alt = product.title;
           thumbnailContainer.appendChild(thumbnailImage);
         } else if (thumbnailUrl.length >= 5) {
           if (index !== 0 && index !== 0 && index <= 3) {
             // Ignorar la primera imagen del thumbnail
             const thumbnailImage = document.createElement("img");
             thumbnailImage.src = thumbnailUrl;
+            thumbnailImage.alt = product.title;
             thumbnailContainer.appendChild(thumbnailImage);
           } else if (index !== 0 && !isButtonAdded) {
             const thumbnailButton = document.createElement("button");
