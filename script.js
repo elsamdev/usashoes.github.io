@@ -15,6 +15,7 @@ let timeoutId = null;
 let productsData;
 let categoria = "";
 const listaCategory = document.getElementById("category2");
+
 const logo = document.querySelector("#logo");
 const inputElement = document.querySelector("#search-input");
 let currentPage = 1;
@@ -135,6 +136,7 @@ fetch("products.json")
     // Evento para filtrar los productos al hacer clic en el logotipo
     logo.addEventListener("click", () => {
       inputElement.value = "";
+      setInitialFocus();
       filterProducts("", "");
     });
 
@@ -413,3 +415,46 @@ carousel.innerHTML = '';
 // Cerrar el lightbox
 lightbox.style.display = 'none';
 }
+
+
+// Función para establecer el enfoque inicial
+const setInitialFocus = () => {
+  const firstCategory = listaCategory.firstElementChild.firstElementChild;
+  firstCategory.classList.add("focused");
+
+  const categories = listaCategory.querySelectorAll("a");
+  categories.forEach((category) => {
+    if (category !== firstCategory) {
+      category.classList.remove("focused");
+    }
+  });
+};
+
+// Función para manejar el cambio de enfoque en las categorías
+const handleCategoryFocus = (event) => {
+  const categories = listaCategory.querySelectorAll("a");
+  categories.forEach((category) => {
+    category.classList.remove("focused");
+  });
+
+  event.target.classList.add("focused");
+};
+
+// Función para restablecer el estado inicial
+const resetCategoryFocus = () => {
+  setInitialFocus();
+
+  const categories = listaCategory.querySelectorAll("a");
+  categories.forEach((category) => {
+    category.addEventListener("click", handleCategoryFocus);
+  });
+};
+
+// Establecer el enfoque inicial
+setInitialFocus();
+
+// Agregar el evento click a los elementos de la lista de categorías
+const categories = listaCategory.querySelectorAll("a");
+categories.forEach((category) => {
+  category.addEventListener("click", handleCategoryFocus);
+});

@@ -265,6 +265,11 @@ h2 {
   width: calc(33.33% - 10px); /* Ajustar el ancho de los elementos */
 }
 
+.focused {
+  outline: none;
+  border-bottom: 2px solid #f37021;
+}
+
  /* #category2 li a:hover {
   border-bottom: 2px solid #f37021;
   
@@ -283,6 +288,17 @@ h2 {
   background-color: #f37021;
   transition: width 0.3s ease;
 }
+
+.focused::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: #f37021;
+  transition: width 0.3s ease;
+  width: 100%;
+}
+
 
 #category2 li a:hover::after,
 #category2 li a:focus::after {
@@ -520,3 +536,4 @@ h2 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto suave */
   margin-top: 10px;
 }
+
