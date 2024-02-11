@@ -530,7 +530,7 @@ const setCategoryFocus = (category) => {
   });
 };
 
-    // Ocultar el preload después de que la página se haya cargado completamente o después de 2 segundos
+    // Ocultar el preload después de que haya pasado un mínimo de 2 segundos
     const preloadDiv = document.querySelector('.preload');
     const logoImg = preloadDiv.querySelector('img');
 
@@ -538,12 +538,17 @@ const setCategoryFocus = (category) => {
       preloadDiv.style.display = 'none';
     };
 
-    // Ocultar el preload después de que la página se haya cargado completamente
-    window.addEventListener('load', () => {
-      hidePreload();
-    });
+    // Ocultar el preload después de que haya pasado un mínimo de 2 segundos
+    const minimumDuration = 2000; // 2 segundos en milisegundos
+    const startTime = new Date().getTime(); // Tiempo actual en milisegundos
 
-    // Ocultar el preload después de 2 segundos
-    setTimeout(() => {
-      hidePreload();
-    }, 2000);
+    window.addEventListener('load', () => {
+      const currentTime = new Date().getTime(); // Tiempo actual al terminar de cargar la página
+      const elapsedTime = currentTime - startTime; // Tiempo transcurrido desde que se inició la carga de la página
+
+      const remainingTime = Math.max(0, minimumDuration - elapsedTime); // Tiempo restante para cumplir el mínimo
+
+      setTimeout(() => {
+        hidePreload();
+      }, remainingTime);
+    });
