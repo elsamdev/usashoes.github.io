@@ -562,3 +562,22 @@ h2 {
   background-color: #333;
   color: #fff;
 }
+
+.preload {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.preload img {
+  width: 400px;
+ 
+}
+

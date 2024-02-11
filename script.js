@@ -529,3 +529,21 @@ const setCategoryFocus = (category) => {
     }
   });
 };
+
+    // Ocultar el preload después de que la página se haya cargado completamente o después de 2 segundos
+    const preloadDiv = document.querySelector('.preload');
+    const logoImg = preloadDiv.querySelector('img');
+
+    const hidePreload = () => {
+      preloadDiv.style.display = 'none';
+    };
+
+    // Ocultar el preload después de que la página se haya cargado completamente
+    window.addEventListener('load', () => {
+      hidePreload();
+    });
+
+    // Ocultar el preload después de 2 segundos
+    setTimeout(() => {
+      hidePreload();
+    }, 2000);
