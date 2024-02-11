@@ -196,12 +196,16 @@ fetch("products.json")
         // Mostrar la variable en la consola para confirmar
         console.log(categoriaSeleccionada);
 
-        if (categoriaSeleccionada == "Para Hombre") {
+        if (categoriaSeleccionada == "Hombre") {
           categoria = "hombre";
-        } else if (categoriaSeleccionada == "Para Mujer") {
+        } else if (categoriaSeleccionada == "Mujer") {
           categoria = "mujer";
         } else if (categoriaSeleccionada == "Niños 1 a 7") {
           categoria = "niños1to7";
+        }  else if (categoriaSeleccionada == "Fútbol") {
+          categoria = "futbol";
+        } else if (categoriaSeleccionada == "Baseball") {
+          categoria = "baseball";
         } else {
           categoria = "";
         }
