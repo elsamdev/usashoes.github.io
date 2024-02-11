@@ -245,7 +245,7 @@ const loadMoreProducts = () => {
   const totalPages = getTotalPages();
   // Función para mostrar la página actual y el total de páginas
  
-  
+  if (totalPages > 1){
   if (currentPage <= totalPages){
    
   
@@ -298,7 +298,7 @@ const loadMoreProducts = () => {
     }, 2000);
   }
 }
-
+}
 };
 
 // Evento para cargar más productos al hacer scroll
@@ -354,6 +354,7 @@ function setupLightbox() {
     }
 
     function openLightbox(){
+      
       const imageTitle = title.textContent;
       const productId = card.dataset.id;
 
@@ -385,7 +386,14 @@ function setupLightbox() {
         // Obtener todas las imágenes en el carrusel y miniaturas
         const images = carousel.getElementsByTagName('img');
         const thumbs = thumbnails.getElementsByTagName('img');
-        console.log(images.length)
+       // console.log("pa ve "+images.length)
+        if (images.length <= 1){
+          carouselPrev.style.display = 'none';
+          carouselNext.style.display = 'none';
+        }else {
+          carouselPrev.style.display = 'block';
+          carouselNext.style.display = 'block';
+        }
         // Ocultar todas las imágenes y miniaturas
         for (let i = 0; i < images.length; i++) {
           images[i].style.display = 'none';
@@ -449,6 +457,13 @@ function setupLightbox() {
     lightbox.style.display = 'none';
     closeLightbox()
   });
+  // Evento al presionar la tecla "Escape"
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeLightbox();
+    }
+  });
+
 }
 
 // Llamar a la función inicialmente
@@ -552,3 +567,5 @@ const setCategoryFocus = (category) => {
         hidePreload();
       }, remainingTime);
     });
+
+

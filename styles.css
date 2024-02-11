@@ -319,7 +319,9 @@ h2 {
     font-size: 18px;
   }
 
-
+  .preload img {
+    width: 200px;
+  }
 
   h1 {
 
@@ -495,9 +497,7 @@ h2 {
     width: 100%;
   }
 
-  .preload img {
-    width: 200px;
-  }
+
 
   #thumbnails {
     justify-content: center; /* Centrar los thumbnails en dispositivos móviles */
@@ -580,6 +580,6 @@ h2 {
 }
 
 .preload img {
-  width: 400px;
+  width: 200px;
 }
 
