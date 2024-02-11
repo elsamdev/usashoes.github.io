@@ -2,7 +2,12 @@
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
-
+body{
+  background-image: url('logobg.png');
+  background-repeat: repeat;
+  background-size: 59px 43px; /* Controla el tamaño de la imagen */
+  
+}
 .container {
   max-width: 1200px;
   margin: 0 auto;
